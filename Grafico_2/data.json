@@ -1,0 +1,9 @@
+[
+    { "dia": "Lunes",     "valor": 150 },
+    { "dia": "Martes",    "valor": 80  },
+    { "dia": "Miercoles", "valor": 90 },
+    { "dia": "Jueves",    "valor": 60  },
+    { "dia": "Viernes",   "valor": 120 },
+    { "dia": "Sabado",    "valor": 30  },
+    { "dia": "Domingo",   "valor": 10  }
+]

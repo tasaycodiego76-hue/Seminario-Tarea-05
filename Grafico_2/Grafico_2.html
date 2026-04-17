@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico 2 - Días de la Semana</title>
+</head>
+<body>
+
+    <div style="width: 50%;">
+        <canvas id="lienzo"></canvas>
+    </div>
+
+    <br>
+    <button type="submit" id="cargar">Cargar Gráfico</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const btnCargar = document.getElementById('cargar')
+        const lienzo = document.getElementById('lienzo')
+
+        btnCargar.addEventListener("click", cargarGrafico)
+
+        function cargarGrafico() {
+            fetch('/Grafico_2/data.json')
+                .then(response => response.json())
+                .then(data => {
+                    grafico.data.labels = data.map(fila => fila.dia)
+                    grafico.data.datasets[0].data = data.map(fila => fila.valor)
+                    grafico.update()
+                })
+        }
+
+        const grafico = new Chart(lienzo, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        data: [],
+                        label: 'Produccion semanal',
+                        backgroundColor: ["rgba(46, 204, 113, 0.2)"]
+                    }
+                ]
+            },
+        })
+
+        console.log(grafico.data)
+    })
+</script>
+</body>
+</html>
