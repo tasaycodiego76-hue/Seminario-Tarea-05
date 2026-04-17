@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico 1 - Lenguajes de Programación</title>
+</head>
+<body>
+
+    <div style="width: 50%;">
+        <canvas id="lienzo"></canvas>
+    </div>
+
+    <br>
+    <label>Python:     <input type="number" id="val-python"     value="0"></label><br><br>
+    <label>JavaScript: <input type="number" id="val-javascript" value="0"></label><br><br>
+    <label>PHP:        <input type="number" id="val-php"        value="0"></label><br><br>
+    <label>Java:       <input type="number" id="val-java"       value="0"></label><br><br>
+    <label>Ruby:       <input type="number" id="val-ruby"       value="0"></label><br><br>
+
+    <button type="submit" id="actualizar">Actualizar Gráfico</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const btnActualizar = document.getElementById('actualizar')
+        const lienzo = document.getElementById('lienzo')
+
+        btnActualizar.addEventListener("click", actualizarGrafico)
+
+        function actualizarGrafico() {
+            grafico.data.datasets[0].data = [
+                Number(document.getElementById('val-python').value),
+                Number(document.getElementById('val-javascript').value),
+                Number(document.getElementById('val-php').value),
+                Number(document.getElementById('val-java').value),
+                Number(document.getElementById('val-ruby').value),
+            ]
+            grafico.update()
+        }
+
+        const grafico = new Chart(lienzo, {
+            type: 'bar',
+            data: {
+                labels: ['Python', 'JavaScript', 'PHP', 'Java', 'Ruby'],
+                datasets: [
+                    {
+                        data: [0, 0, 0, 0, 0],
+                        label: 'Popularidad de lenguajes',
+                        backgroundColor: ["rgba(46, 204, 113, 0.2)"]
+                    }
+                ]
+            },
+        })
+
+        console.log(grafico.data)
+    })
+</script>
+</body>
+</html>
