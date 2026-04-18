@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda por RUC</title>
+</head>
+<body>
+
+    <h3>Búsqueda de Empresa por RUC</h3>
+
+    <label>RUC: <input type="text" id="ruc" maxlength="11"></label><br><br>
+    <button id="buscar">Buscar</button>
+
+    <br><br>
+    <p>Razón Social: <span id="razon-social"></span></p>
+    <p>Estado: <span id="estado"></span></p>
+    <p>Dirección: <span id="direccion"></span></p>
+    <p>Distrito: <span id="distrito"></span></p>
+    <p>Provincia: <span id="provincia"></span></p>
+    <p>Departamento: <span id="departamento"></span></p>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const btnBuscar = document.getElementById('buscar')
+
+        btnBuscar.addEventListener("click", buscarEmpresa)
+
+        function buscarEmpresa() {
+            const ruc = document.getElementById('ruc').value
+
+            fetch(`http://localhost:3000/buscar-ruc?numero=${ruc}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('razon-social').textContent = data.razon_social
+                    document.getElementById('estado').textContent       = data.estado
+                    document.getElementById('direccion').textContent    = data.direccion
+                    document.getElementById('distrito').textContent     = data.distrito
+                    document.getElementById('provincia').textContent    = data.provincia
+                    document.getElementById('departamento').textContent = data.departamento
+                })
+        }
+
+    })
+</script>
+</body>
+</html>
