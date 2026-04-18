@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda por DNI</title>
+</head>
+<body>
+
+    <h3>Búsqueda de Persona por DNI</h3>
+
+    <label>DNI: <input type="text" id="dni"></label><br><br>
+    <button id="buscar">Buscar</button>
+
+    <br><br>
+    <p>Nombres: <span id="nombres"></span></p>
+    <p>Apellido Paterno: <span id="apellido-paterno"></span></p>
+    <p>Apellido Materno: <span id="apellido-materno"></span></p>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const btnBuscar = document.getElementById('buscar')
+
+        btnBuscar.addEventListener("click", buscarPersona)
+
+        function buscarPersona() {
+            const dni = document.getElementById('dni').value
+
+            fetch(`http://localhost:3000/buscar-dni?numero=${dni}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('nombres').textContent          = data.first_name
+                    document.getElementById('apellido-paterno').textContent = data.first_last_name
+                    document.getElementById('apellido-materno').textContent = data.second_last_name
+                })
+        }
+
+    })
+</script>
+</body>
+</html>
