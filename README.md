@@ -49,7 +49,7 @@ Consulta nombres y apellidos de una persona por su número de DNI usando la API 
 
 1. Instalar dependencias:
 ```bash
-npm install express
+npm install 
 ```
 
 2. Obtener tu token en https://decolecta.com/ y colocarlo en `server.js`:
@@ -92,6 +92,5 @@ HTML        - Estructura de las páginas
 JavaScript  - Lógica del cliente
 Chart.js    - Gráficos estadísticos
 Node.js     - Entorno de ejecución del servidor
-Express     - Framework web para el servidor
 Decolecta   - API de consulta de DNI y RUC
 ```

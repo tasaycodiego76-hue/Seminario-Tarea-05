@@ -5,7 +5,7 @@ const app = express()
 app.use(express.static('Busqueda_Persona'))
 app.use(express.static('Busqueda_Empresa'))
 
-const TOKEN = "sk_11580.SJ1QONzkOs0DKyhtxK4xwkC9uOB5JGSu"
+const TOKEN = "TU_TOKEN_AQUI"
 
 // Ruta para buscar Persona por DNI
 app.get('/buscar-dni', function (req, res) {
